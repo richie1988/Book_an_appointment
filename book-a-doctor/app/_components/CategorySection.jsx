@@ -25,7 +25,7 @@ const[categoryList, setCategoryList]= useState([]);
       <Input type="text" placeholder="Search" />
       <Button type="submit"> <Search className='h-4 w-4 mr-2'/>Search</Button>
     </div>
-    {/*Displat List of categories*/}
+    {/*Display List of categories*/}
     <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mt-5'>
     {categoryList.map((item, index) => index <6 && (
     <div key={index} className='flex flex-col text-center items-center p-5 bg-blue-50 m-2 rounded-lg gap-2 cursor-pointer hover:scale-105 transition-all easy-in-out'>
