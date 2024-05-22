@@ -1,9 +1,16 @@
 import React from 'react'
+import CategoryList from './_components/CategoryList'
 
-function layout() {
+function layout({children}) {
   return (
-    <div>
-      
+    <div className='grid grid-cols-4'>
+        <div>
+{/*Category*/}
+<CategoryList/>
+        </div>
+        <div className='col-span-3'>
+        {children}
+        </div>
     </div>
   )
 }
