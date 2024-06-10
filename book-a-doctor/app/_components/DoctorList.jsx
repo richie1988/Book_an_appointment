@@ -22,8 +22,8 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }) {
               )}
               <div className='mt-3 items-baseline flex flex-col gap-1'>
                 <h2 className='text-[15px] bg-blue-100 p-1 rounded-full px-2 text-primary'>
-                  {doctor.attributes?.category?.data?.attributes?.Name ? (
-                    doctor.attributes.category.data.attributes.Name
+                  {doctor.attributes?.categories?.data?.attributes?.Name ? (
+                    doctor.attributes.categories.data.attributes.Name
                   ) : (
                     "Category not available"
                   )}

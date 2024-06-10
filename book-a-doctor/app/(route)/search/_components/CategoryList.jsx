@@ -43,7 +43,7 @@ function CategoryList() {
             {categoryList && categoryList.map((item, index) => (
               <CommandItem key={index}>
                 <Link href={'/search/' + item?.attributes?.Name} className={`p-2 flex gap-2 text-[16px] text-blue-600 rounded-md items-center cursor-pointer w-full ${category === item.attributes.Name && 'bg-blue-100'}`}>
-                  <Image src={item.attributes?.Icon?.data.attributes?.url} alt="icon" width={25} height={25} />
+                  <Image src={item.attributes.Icon.data[0].attributes.url} alt="icon" width={25} height={25} />
                   <label>{item.attributes.Name}</label>
                 </Link>
               </CommandItem>
