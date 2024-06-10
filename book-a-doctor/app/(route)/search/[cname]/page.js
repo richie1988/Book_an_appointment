@@ -1,15 +1,28 @@
 "use client"
-import React, { useEffect } from 'react'
+import GlobalApi from '@/app/_utils/GlobalApi';
+import DoctorList from '@/app/_components/DoctorList';
+import React, { useEffect, useState } from 'react';
 
-function Search({params}) {
-  useEffect(()=>{
-console.log(params)
-  },[])
+function Search({ params }) {
+  const [doctorsList, setDoctorsList] = useState([]);
+
+  useEffect(() => {
+    getDoctors();
+  }, [params.cname]);
+
+  const getDoctors = () => {
+    GlobalApi.getDoctorsByCategory(params.cname).then(resp => {
+      setDoctorsList(resp.data.data);
+    }).catch(err => {
+      console.error("Failed to fetch doctors:", err);
+    });
+  };
+
   return (
     <div>
-      Search
+      <DoctorList heading={params.cname} doctorList={doctorsList} />
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;

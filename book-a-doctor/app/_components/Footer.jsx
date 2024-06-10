@@ -4,7 +4,7 @@ function Footer() {
   return (
    <footer className="bg-gray-100 mt-10">
   <div className="mx-auto max-w-5xl justify-center text-center flex flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
-   <img src='/logo.svg' alt='logo' width={200} height={100} />
+   <img src='/logo.svg' alt='logo' width={200} height={100} priority/>
 
     <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum
