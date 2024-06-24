@@ -31,7 +31,7 @@ function DoctorList({ doctorList, heading = "Popular Doctors" }) {
                 <h2 className='font-bold'>{doctor.attributes.Name}</h2>
                 <h2 className='text-primary text-sm'>{doctor.attributes.Year_of_Experience}</h2>
                 <h2 className='text-grey-500 text-sm'>{doctor.attributes.Address}</h2>
-                <h2 className='p-2 px-3 border-[1px] border-primary text-primary rounded-full w-full text-center text-[11px] mt-2 cursor-pointer hover:bg-primary hover:text-white'>Book Now</h2>
+                <Link href={'/details'+doctor?.id} className='w-full'><h2 className='p-2 px-3 border-[1px] border-primary text-primary rounded-full w-full text-center text-[11px] mt-2 cursor-pointer hover:bg-primary hover:text-white'>Book Now</h2></Link>
               </div>
             </div>
           ))
