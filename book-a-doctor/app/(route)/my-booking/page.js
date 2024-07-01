@@ -1,17 +1,34 @@
 "use client"
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import BookingList from './BookingList'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import GlobalApi from '@/app/_utils/GlobalApi'
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 
 
 
 function MyBooking(){
 
-
+    const [bookingList, setBookingList]=useState([]);
+    useEffect(()=>{
+        user&&getUserBookingList();
+    },[user])
+    const {user}=useKindeBrowserClient();
     const getUserBookingList=()=>{
-        GlobalApi.getUserBookingList().then(resp=>{
-            
+        GlobalApi.getUserBookingList(user?.email).then(resp=>{
+            //console.log(resp.data);
+            setBookingList(resp.data)
+
         })
+    }
+//used to filter the user bookings
+    const filterBookingList=(status)=>{
+        const result = bookingList.filter(item=>
+          status=="upcoming"?  new Date(item.attributes.Date)>= new Date()
+          :new Date(item.attributes.Date)<= new Date()
+        )
+        //console.log(result)
+        return result
     }
     return (
         <div className='px-4 sm:px-10 mt-10'>
@@ -23,10 +40,10 @@ function MyBooking(){
             <TabsTrigger value="expired">Expired</TabsTrigger>
         </TabsList>
         <TabsContent value="upcoming">
-            <BookingList />
+            <BookingList bookingList={filterUserBooking("upcoming")} expired={false}/>
         </TabsContent>
         <TabsContent value="expired">
-        <BookingList />
+        <BookingList bookingList={filterBookingList("expired")} expired={true}/>
         </TabsContent>
         </Tabs>
 

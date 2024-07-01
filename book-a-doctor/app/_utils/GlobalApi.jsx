@@ -16,7 +16,7 @@ const getDoctorsByCategory =(category)=> axiosClient.get('/doctors?filters[categ
 const getDoctorsById =(id)=> axiosClient.get('/doctors/'+id+"?populate=*")
 const bookAppointment =(data)=> axiosClient.post('/appointment',data)
 const sendEmail=(data)=>axios.post('/api/sendEmail', data)
-const getUserBookingList=(userEmail)=>axios.get('/appointment?filters[Email][$eq]='+userEmail+"&populate=*")
+const getUserBookingList=(userEmail)=>axios.get('/appointment?filters[Email][$eq]='+userEmail+"&populate[doctor][populate][image][populate][0]=url&populate=*")
 export default {
     getCategory,
     getDoctors,
