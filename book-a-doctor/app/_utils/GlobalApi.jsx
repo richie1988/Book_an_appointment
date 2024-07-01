@@ -13,10 +13,16 @@ const axiosClient = axios.create({
 const getCategory =()=> axiosClient.get('/categories?populate=*')
 const getDoctors =()=> axiosClient.get('/doctors?populate=*')
 const getDoctorsByCategory =(category)=> axiosClient.get('/doctors?filters[categories][Name][$in]='+category+"&populate=*");
-const getDotorById=(id)=> axiosClient.get('/doctors/'+id+"?populate=*")
+const getDoctorsById =(id)=> axiosClient.get('/doctors/'+id+"?populate=*")
+const bookAppointment =(data)=> axiosClient.post('/appointment',data)
+const sendEmail=(data)=>axios.post('/api/sendEmail', data)
+const getUserBookingList=(userEmail)=>axios.get('/appointment?filters[Email][$eq]='+userEmail+"&populate=*")
 export default {
     getCategory,
     getDoctors,
     getDoctorsByCategory,
-    getDoctorById
+    getDoctorsById,
+    bookAppointment,
+    sendEmail,
+    getUserBookingList
 }

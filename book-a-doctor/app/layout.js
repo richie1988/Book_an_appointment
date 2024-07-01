@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 // import HeroSection from "./_components/HeroSection";
+import { Toaster } from "@/components/ui/sonner";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <div className="md:px-5">
         <Header/>
         {children}
+        <Toaster />
         </div>
         <Footer/>
         </body>

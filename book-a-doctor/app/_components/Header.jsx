@@ -78,7 +78,7 @@ console.log(user)
   <PopoverContent className="w-40">
   <ul className="flex-col gap-2">
   <li className="cursor-pointer hover:bg-slate-500 p-2 rounded-md">Profile</li>
-  <li className="cursor-pointer hover:bg-slate-500 p-2 rounded-md">My bookings</li>
+  <Link href={'/my-booking'} className="cursor-pointer hover:bg-slate-500 p-2 rounded-md">My bookings</Link>
   <li className="cursor-pointer hover:bg-slate-500 p-2 rounded-md"><LogoutLink >Logout</LogoutLink> </li>
 
   </ul>
