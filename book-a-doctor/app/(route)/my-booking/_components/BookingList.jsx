@@ -2,9 +2,26 @@
 import React from 'react'
 import Image from 'next/image'
 import { Calendar } from "@/components/ui/calendar"
-  import MapPin, { Clock } from 'lucide-react'
+  import { Clock } from 'lucide-react'
+  import CancelBooking from 'cancelBooking'
+  import GlobalApi from '@/app/_utils/GlobalApi'
+  import {toast} from 'sonner'
 
 function BookingList({bookingList, expired}) {
+
+    const onDeleteBooking=(item)=>{
+        console.log(item)
+
+        GlobalApi.deleteBooking(item.id).then(resp=>{
+            console.log(resp)
+            if(resp){
+                toast('Booking Deleted Successfully!');
+                updateRecord()
+            }
+
+        })
+
+    }
     return (
         <div>
             <h2>Booking List</h2>
@@ -20,7 +37,7 @@ function BookingList({bookingList, expired}) {
 
                     <div className="flex flex-col gap-2 w-full">
                         <h2 className='font-bold text-[18px] items-center flex justify-between'>{booking.attributes.doctor.data.attributes.Name}
-                            {expired&& <Button variant="outline" className='bg-primary text-white rounded-lg border-primary'>Cancel Appointment</Button>}
+                            {!expired&& <CancelBooking onContinue={()=>onDeleteBooking(item)}/>}
                         </h2>
                         <h2 className='flex gap-2 text-gray-500'><MapPin className='text-primary'/>{booking.attributes.doctor.data.attributes.Address}</h2>
                         <h2 className='flex gap-2 text-gray-500'><Calendar className='text-primary'/> Appointment on{moment(booking.attributes.Date).format('DD-MM-YYYY')}</h2>

@@ -1,3 +1,4 @@
+"use client"
 import React,{useState, useEffect} from 'react'
 import {
     Dialog,
@@ -67,7 +68,7 @@ function BookAppointment({doctor}){
             }
         }
 
-        GlobaApi.saveBooking(data).then(resp=>{
+        GlobalApi.saveBooking(data).then(resp=>{
             //console.log(resp.data)
             if(resp){
                 GlobalApi.sendEmail(data).then(resp=>{
