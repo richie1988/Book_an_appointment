@@ -66,7 +66,7 @@ Learn hands-on with 'school-library' in a practical Ruby environment for advance
 2. Navigate to the project directory:
 
    ```bash
-   cd ShopOnline
+   cd book-a-doctor
    ```
 ### Install <a name="install"></a>
 
