@@ -1,6 +1,6 @@
 "use client"
 import React,{useEffect, useState} from 'react'
-import BookingList from './BookingList'
+import BookingList from './components/BookingList'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GlobalApi from '@/app/_utils/GlobalApi'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'

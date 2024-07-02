@@ -1,7 +1,8 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
-import Calendar from 'heroicons/outline/calendar.svg'
-import Clock from 'heroicons/outline/clock.svg'
+import { Calendar } from "@/components/ui/calendar"
+  import MapPin, { Clock } from 'lucide-react'
 
 function BookingList({bookingList, expired}) {
     return (
