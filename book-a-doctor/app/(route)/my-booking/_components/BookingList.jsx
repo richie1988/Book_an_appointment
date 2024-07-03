@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Calendar } from "@/components/ui/calendar"
   import { Clock } from 'lucide-react'
-  import CancelBooking from 'cancelBooking'
+  import CancelBooking from './cancelBooking'
   import GlobalApi from '@/app/_utils/GlobalApi'
   import {toast} from 'sonner'
 

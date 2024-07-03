@@ -34,7 +34,7 @@ function DoctorDetails({doctor}){
             <div>
             <Image 
                 src={doctor.attributes.Image.data[0].attributes.url} 
-                alt="doctor" 
+                alt="doctor-image" 
                 width={500} 
                 height={200}
                 className="h-[200px] w-full obj-cover rounded" 

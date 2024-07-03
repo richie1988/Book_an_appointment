@@ -10,7 +10,7 @@ function Details(params) {
   },[])
   const getDoctorsById=()=>{
     GlobalApi.getDoctorsById(params.recordId).then(resp=>{
-      console.log(resp.data)
+      //console.log(resp.data)
       setDoctor(resp.data.data);
     
     })
