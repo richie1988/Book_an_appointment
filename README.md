@@ -41,12 +41,12 @@ This the Doctor ooking Appointment App that allows users to book appointment wit
 ### Key Features <a name="key-features"></a>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- [ Here](https://github.com/richie1988/Book_an_appointment)
+- [ Here](https://book-an-appointment.vercel.app/)
 
 1. **Advanced List Manipulation:**
 Explore advanced list manipulation with 'school-library' in a React class for enhanced understanding.
 
-2. **Educational Integration:**
+1. **Educational Integration:**
 Learn hands-on with 'school-library' in a practical Ruby environment for advanced list manipulation.
 
 ## Getting Started <a name="getting-started"></a>
