@@ -10,13 +10,16 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import React from "react";
+import * as React from "react";
+
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
 
-const EmailTemplate = ({ userFirstname = "Test User" }) => (
+export const EmailTemplate = ({
+  userFirstname="Test User",
+}) => (
   <Html>
     <Head />
     <Preview>
@@ -33,7 +36,7 @@ const EmailTemplate = ({ userFirstname = "Test User" }) => (
         />
         <Text style={paragraph}>Hi {userFirstname},</Text>
         <Text style={paragraph}>
-          Welcome to Richards Platform, the sales intelligence platform that helps you
+          Welcome to Richard, the sales intelligence platform that helps you
           uncover qualified leads and close deals faster.
         </Text>
         <Section style={btnContainer}>
@@ -44,7 +47,7 @@ const EmailTemplate = ({ userFirstname = "Test User" }) => (
         <Text style={paragraph}>
           Best,
           <br />
-          The Koala team
+          The Richards team
         </Text>
         <Hr style={hr} />
         <Text style={footer}>
@@ -54,6 +57,7 @@ const EmailTemplate = ({ userFirstname = "Test User" }) => (
     </Body>
   </Html>
 );
+
 
 export default EmailTemplate;
 
