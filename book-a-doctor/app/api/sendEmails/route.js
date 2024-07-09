@@ -13,7 +13,7 @@ export async function POST(req) {
 
     // Send email using Resend library
     const emailResponse = await resend.emails.send({
-      from: 'https://richards-space.onrender.com/',
+      from: 'doctor-Appointment-bookinghttps://richards-space.onrender.com/',
       to: [data.Email],
       subject: 'Appointment Booking Confirmation',
       react: EmailTemplate({ userFirstname: result.userFirstname }), // Pass correct data to EmailTemplate
