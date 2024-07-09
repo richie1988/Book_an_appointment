@@ -1,31 +1,28 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import GlobalApi from '@/app/_utils/GlobalApi';
 import DoctorList from '@/app/_components/DoctorList';
-import { usePathname } from 'next/navigation';
+import GlobalApi from '@/app/_utils/GlobalApi'
+import React, { useEffect, useState } from 'react'
 
-function Search() {
-  const [doctorsList, setDoctorsList] = useState([]);
-  const params = usePathname();
-  const category = params.split('/')[2];
+function Search({params}) {
 
-  useEffect(() => {
-    getDoctorsByCategory(category); // Fetch doctors based on the selected category
-  }, [category]);
+  const [doctorList,setDoctorList]=useState([]);
+  useEffect(()=>{
+    console.log(params.cname);
+    getDoctors();
+  },[])
 
-  const getDoctorsByCategory = (category) => {
-    GlobalApi.getDoctorsByCategory(category).then(resp => {
-      setDoctorsList(resp.data.data);
-    }).catch(err => {
-      console.error("Failed to fetch doctors:", err);
-    });
-  };
-
+  const getDoctors=()=>{
+    GlobalApi.getDoctorByCategory(params.cname).then(resp=>{
+      setDoctorList(resp.data.data);
+    })
+  }
   return (
-    <div>
-      <DoctorList heading={category} doctorList={doctorsList} />
+    <div className='mt-5'>
+        <DoctorList heading={params.cname}
+        doctorList={doctorList}
+        />
     </div>
-  );
+  )
 }
 
-export default Search;
+export default Search

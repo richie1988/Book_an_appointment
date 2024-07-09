@@ -1,54 +1,53 @@
-"use client"
-import React from 'react'
+import { Button } from '@/components/ui/button'
+import { Calendar, Clock, MapPin } from 'lucide-react'
+import moment from 'moment'
 import Image from 'next/image'
-import { Calendar } from "@/components/ui/calendar"
-  import { Clock } from 'lucide-react'
-  import CancelBooking from './cancelBooking'
-  import GlobalApi from '@/app/_utils/GlobalApi'
-  import {toast} from 'sonner'
+import React from 'react'
+import CancelAppointment from './CancelAppointment'
+import GlobalApi from '@/app/_utils/GlobalApi'
+import { toast } from 'sonner'
 
-function BookingList({bookingList, expired}) {
-
-    const onDeleteBooking=(item)=>{
-        console.log(item)
-
-        GlobalApi.deleteBooking(item.id).then(resp=>{
-            console.log(resp)
-            if(resp){
-                toast('Booking Deleted Successfully!');
-                updateRecord()
-            }
-
-        })
-
-    }
-    return (
-        <div>
-            <h2>Booking List</h2>
-                {bookingList&&bookingList.map((booking, index) => (
-                    <div key={index} className='flex gap-4 item-center border p-3 m-3 rounded-lg'>
-                         <Image 
-                  src={ booking.attributes.doctor.data.attributes?.Image.data[0].attributes.url}
-                  alt="doctor-image"
-                  width={80} 
-                  height={80}
-                  className="h-[80px] w-[80px] obj-cover rounded" 
+function BookingList({bookingList,expired,updateRecord}) {
+  
+  const onDeleteBooking=(item)=>{
+    console.log(item)
+    GlobalApi.deleteBooking(item.id).then(resp=>{
+      console.log(resp);
+      if(resp)
+      {
+        toast('Booking Delete Successfully!');
+        updateRecord()
+      }
+    })
+  }
+  return (
+    <div>
+        {bookingList.length>0?bookingList.map((item,index)=>(
+            <div className=' flex gap-4 items-center border p-5 m-3 rounded-lg'>
+                <Image src={item.attributes.doctor.data.attributes?.image?.data?.attributes?.url}
+                className='rounded-full h-[70px] w-[70px] object-cover'
+                width={70}
+                height={70}
+                alt='doctor-image'
                 />
-
-                    <div className="flex flex-col gap-2 w-full">
-                        <h2 className='font-bold text-[18px] items-center flex justify-between'>{booking.attributes.doctor.data.attributes.Name}
-                            {!expired&& <CancelBooking onContinue={()=>onDeleteBooking(item)}/>}
-                        </h2>
-                        <h2 className='flex gap-2 text-gray-500'><MapPin className='text-primary'/>{booking.attributes.doctor.data.attributes.Address}</h2>
-                        <h2 className='flex gap-2 text-gray-500'><Calendar className='text-primary'/> Appointment on{moment(booking.attributes.Date).format('DD-MM-YYYY')}</h2>
-                        <h2 className='flex gap-2 text-gray-500'><Clock className='text-primary'/> At Time:{booking.attributes.Time}</h2>
-                        <h2>{booking.attributes.Status}</h2>
-                    </div>
-                    </div>
-                ))}
+                <div className='flex flex-col gap-2 w-full'>
+                    <h2 className='font-bold text-[18px] items-center flex justify-between'>{item.attributes.doctor.data.attributes.Name}
+                    {!expired&&<CancelAppointment onContinueClick={()=>onDeleteBooking(item)}/>}
+                    </h2>
+                    <h2 className='flex gap-2 text-gray-500'> <MapPin className='text-primary h-5 w-5'/> 
+                    {item.attributes.doctor.data.attributes.Address}</h2>
+                    <h2 className='flex gap-2'><Calendar className='text-primary h-5 w-5'/> Appointment On:
+                     { moment(item.attributes.Date).format('DD-MMM-YYYY')} </h2>
+                     <h2 className='flex gap-2'><Clock className='text-primary h-5 w-5'/> At Time : {item.attributes.Time} </h2>
+                </div>
             </div>
-
-    )
+        ))
+          :
+          <div className='h-[150px] w-full bg-slate-100 animate-pulse rounded-lg'>
+          </div>
+      }
+    </div>
+  )
 }
 
 export default BookingList

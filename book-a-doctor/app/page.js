@@ -1,7 +1,7 @@
 "use client"
 // import { Button } from "@/components/ui/button"
 import HeroSection from "./_components/HeroSection";
-import CategorySection from "./_components/CategorySection";
+import CategorySection from "./_components/CategorySearch";
 import DoctorList from "./_components/DoctorList";
 import GlobalApi from './_utils/GlobalApi'
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ export default function Home() {
   },[])
 
   const getDoctorList=()=> {
-    GlobalApi.getDoctors().then(resp=> {
+    GlobalApi.getDoctorList().then(resp=> {
       console.log(resp.data);
       setDoctorList(resp.data.data);
     })
