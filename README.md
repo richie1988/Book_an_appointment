@@ -41,7 +41,7 @@ This the Doctor ooking Appointment App that allows users to book appointment wit
 ### Key Features <a name="key-features"></a>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- [ Here](https://book-an-appointment.vercel.app/)
+- [ Here](https://doctorsappointment-richard-sikaongas-projects.vercel.app/)
 
 1. **Advanced List Manipulation:**
 Explore advanced list manipulation with 'school-library' in a React class for enhanced understanding.
