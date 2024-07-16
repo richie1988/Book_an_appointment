@@ -52,7 +52,7 @@ function CategorySearch() {
       [1,2,3,4,5,6].map((item,index)=>(
         <div className=' bg-slate-200 m-2
        w-[130px] h-[120px] rounded-lg animate-pulse'>
-            
+            Server down cant load content comeback later
         </div>
     ))
      

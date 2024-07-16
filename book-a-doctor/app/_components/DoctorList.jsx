@@ -45,7 +45,9 @@ function DoctorList({ doctorList, heading = 'Popular Doctors' }) {
         ) : (
           // Skeleton Effect or Loading State
           [1, 2, 3, 4, 5, 6].map((item, index) => (
-            <div key={index} className='h-[220px] bg-slate-200 w-full rounded-lg animate-pulse'></div>
+            <div key={index} className='h-[220px] bg-slate-200 w-full rounded-lg animate-pulse'>
+              Server its down come back later
+            </div>
           ))
         )}
       </div>
